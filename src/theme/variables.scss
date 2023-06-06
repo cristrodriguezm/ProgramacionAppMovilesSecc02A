@@ -1,0 +1,179 @@
+/** Ionic Variables and Theming. For more info, please see:
+ * http://ionicframework.com/docs/theming/
+ */
+
+/** Ionic CSS Variables **/
+:root {
+  /** primary **/
+  --ion-color-primary: #00897b; // Color primario relacionado con la naturaleza
+  --ion-color-primary-rgb: 0, 137, 123;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #00796f;
+  --ion-color-primary-tint: #009688;
+
+  /** secondary **/
+  --ion-color-secondary: #689f38; // Color secundario relacionado con la naturaleza
+  --ion-color-secondary-rgb: 104, 159, 56;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #5a8932;
+  --ion-color-secondary-tint: #7ac36a;
+
+  /** tertiary **/
+  --ion-color-tertiary: #afb42b; // Color terciario relacionado con la naturaleza
+  --ion-color-tertiary-rgb: 175, 180, 43;
+  --ion-color-tertiary-contrast: #000000;
+  --ion-color-tertiary-contrast-rgb: 0, 0, 0;
+  --ion-color-tertiary-shade: #9ea128;
+  --ion-color-tertiary-tint: #c5c96b;
+
+  /** success **/
+  --ion-color-success: #4caf50; // Color de éxito relacionado con la naturaleza
+  --ion-color-success-rgb: 76, 175, 80;
+  --ion-color-success-contrast: #000000;
+  --ion-color-success-contrast-rgb: 0, 0, 0;
+  --ion-color-success-shade: #459f46;
+  --ion-color-success-tint: #5ecf53;
+
+  /** warning **/
+  --ion-color-warning: #ff9800; // Color de advertencia relacionado con la naturaleza
+  --ion-color-warning-rgb: 255, 152, 0;
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-contrast-rgb: 0, 0, 0;
+  --ion-color-warning-shade: #e08a00;
+  --ion-color-warning-tint: #ffab36;
+
+  /** danger **/
+  --ion-color-danger: #e53935; // Color de peligro relacionado con la naturaleza
+  --ion-color-danger-rgb: 229, 57, 53;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #c62828;
+  --ion-color-danger-tint: #ef5350;
+
+  /** dark **/
+  --ion-color-dark: #424242; // Color oscuro relacionado con la naturaleza
+  --ion-color-dark-rgb: 66, 66, 66;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #3b3b3b;
+  --ion-color-dark-tint: #535353;
+
+  /** medium **/
+  --ion-color-medium: #bdbdbd; // Color medio relacionado con la naturaleza
+  --ion-color-medium-rgb: 189, 189, 189;
+  --ion-color-medium-contrast: #000000;
+  --ion-color-medium-contrast-rgb: 0, 0, 0;
+  --ion-color-medium-shade: #a8a8a8;
+  --ion-color-medium-tint: #c4c4c4;
+
+  /** light **/
+  --ion-color-light: #f5f5f5; // Color claro relacionado con la naturaleza
+  --ion-color-light-rgb: 245, 245, 245;
+  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #d7d7d7;
+  --ion-color-light-tint: #f8f8f8;
+}
+
+@media (prefers-color-scheme: dark) {
+  /*
+   * Dark Colors
+   * -------------------------------------------
+   */
+
+  body {
+    --ion-color-primary: #26a69a;
+    --ion-color-primary-rgb: 38,166,154;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255,255,255;
+    --ion-color-primary-shade: #218c83;
+    --ion-color-primary-tint: #3bb1ab;
+
+    --ion-color-secondary: #8bc34a;
+    --ion-color-secondary-rgb: 139,195,74;
+    --ion-color-secondary-contrast: #ffffff;
+    --ion-color-secondary-contrast-rgb: 255,255,255;
+    --ion-color-secondary-shade: #7aac3a;
+    --ion-color-secondary-tint: #9edf5e;
+
+    --ion-color-tertiary: #d4e157;
+    --ion-color-tertiary-rgb: 212,225,87;
+    --ion-color-tertiary-contrast: #000000;
+    --ion-color-tertiary-contrast-rgb: 0,0,0;
+    --ion-color-tertiary-shade: #b9cc50;
+    --ion-color-tertiary-tint: #d7e37b;
+
+    --ion-color-success: #81c784;
+    --ion-color-success-rgb: 129,199,132;
+    --ion-color-success-contrast: #000000;
+    --ion-color-success-contrast-rgb: 0,0,0;
+    --ion-color-success-shade: #72b377;
+    --ion-color-success-tint: #8fd09a;
+
+    --ion-color-warning: #ff5722;
+    --ion-color-warning-rgb: 255,87,34;
+    --ion-color-warning-contrast: #000000;
+    --ion-color-warning-contrast-rgb: 0,0,0;
+    --ion-color-warning-shade: #e0511a;
+    --ion-color-warning-tint: #ff6d42;
+
+    --ion-color-danger: #e57373;
+    --ion-color-danger-rgb: 229,115,115;
+    --ion-color-danger-contrast: #ffffff;
+    --ion-color-danger-contrast-rgb: 255,255,255;
+    --ion-color-danger-shade: #c96363;
+    --ion-color-danger-tint: #e78888;
+
+    --ion-color-dark: #000000;
+    --ion-color-dark-rgb: 0,0,0;
+    --ion-color-dark-contrast: #ffffff;
+    --ion-color-dark-contrast-rgb: 255,255,255;
+    --ion-color-dark-shade: #000000;
+    --ion-color-dark-tint: #1e1e1e;
+
+    --ion-color-medium: #616161; // Color medio relacionado con la naturaleza
+    --ion-color-medium-rgb: 97, 97, 97;
+    --ion-color-medium-contrast: #000000;
+    --ion-color-medium-contrast-rgb: 0, 0, 0;
+    --ion-color-medium-shade: #535353;
+    --ion-color-medium-tint: #6d6d6d;
+
+    --ion-color-light: #f5f5f5; // Color claro relacionado con la naturaleza
+    --ion-color-light-rgb: 245, 245, 245;
+    --ion-color-light-contrast: #000000;
+    --ion-color-light-contrast-rgb: 0, 0, 0;
+    --ion-color-light-shade: #d7d7d7;
+    --ion-color-light-tint: #f8f8f8;
+  }
+}
+
+/** Ionic Typography Defaults **/
+:root {
+  --ion-font-family: "Roboto", sans-serif;
+  --ion-font-weight: 400;
+  --ion-font-style: normal;
+  --ion-font-size: 14px;
+  --ion-text-color: #333333;
+  --ion-text-color-rgb: 51, 51, 51;
+  --ion-text-color-shade: #000000;
+  --ion-text-color-tint: #4d4d4d;
+}
+
+/** Ionic Common CSS **/
+/**
+ * The Ionicons Webfont is licensed under the MIT License.
+ * Attribution required: see ionicframework.com/docs/ionicons/#cdn-permalink
+ */
+@font-face {
+  font-family: 'Ionicons';
+  src: url('https://cdn.jsdelivr.net/npm/ionicons/dist/ionicons/ionicons.eot?v=3.0.0-alpha.3');
+  src: url('https://cdn.jsdelivr.net/npm/ionicons/dist/ionicons/ionicons.eot?v=3.0.0-alpha.3#iefix') format('embedded-opentype'),
+       url('https://cdn.jsdelivr.net/npm/ionicons/dist/ionicons/ionicons.ttf?v=3.0.0-alpha.3') format('truetype'),
+       url('https://cdn.jsdelivr.net/npm/ionicons/dist/ionicons/ionicons.woff?v=3.0.0-alpha.3') format('woff'),
+       url('https://cdn.jsdelivr.net/npm/ionicons/dist/ionicons/ionicons.svg?v=3.0.0-alpha.3#Ionicons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}

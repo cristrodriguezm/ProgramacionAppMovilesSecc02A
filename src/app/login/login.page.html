@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="login-title">Ingresar a SkeletonApp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" animated="true" class="scaleIn">
+    <h1 class="login-heading">Ingresa tus Datos</h1>
+    <ion-list>
+      <!-- Campo de usuario -->
+      <ion-item>
+        <ion-label position="floating">Usuario (3-8 caracteres alfanuméricos)</ion-label>
+        <ion-input formControlName="username" type="text" pattern="^[a-zA-Z0-9]{3,8}$" required maxlength="8"></ion-input>
+      </ion-item>
+  
+      <!-- Campo de contraseña -->
+      <ion-item>
+        <ion-label position="floating">Contraseña (4 dígitos)</ion-label>
+        <ion-input formControlName="password" type="password" pattern="^[0-9]{4}$" required maxlength="4"></ion-input>
+      </ion-item>
+    </ion-list>
+  
+    <!-- Botón de inicio de sesión -->
+    <div class="ion-padding">
+      <ion-button expand="full" color="primary" type="submit" class="fadeIn">Iniciar sesión</ion-button>
+    </div>
+
+    <!-- Botón de borrar campos -->
+    <div class="ion-padding">
+      <ion-button expand="full" color="danger" (click)="clearFields()">Borrar</ion-button>
+    </div>
+
+    <!-- Opción "No tienes cuenta? Crear una" -->
+    <div class="ion-padding">
+      <p class="no-account">No tienes cuenta? <a (click)="goToRegister()">Crear una</a></p>
+    </div>
+
+  </form>
+  
+</ion-content>

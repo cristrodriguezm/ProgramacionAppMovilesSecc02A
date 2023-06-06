@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Parques en Chile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-img [src]="currentImage" class="main-image" animated="true" class="slideInRight"></ion-img>
+  <ion-card *ngFor="let parque of parques" (click)="verDetalleParque(parque.id)">
+    <ng-container *ngIf="parque.nombre === 'Parque La Campana'">
+      <img src="/assets/images/campana/Portada.jpg" alt="Campana">
+
+      <ion-card-header>
+        <ion-card-title>Parque Nacional La Campana</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>El Parque Nacional La Campana es un destino ideal para los amantes del trekking y la naturaleza. Cuenta con una gran variedad de senderos que te llevarán a disfrutar de vistas panorámicas, cascadas y una rica biodiversidad.</p>
+        <p>¡Prepara tu equipo de senderismo y explora este maravilloso parque!</p>
+      </ion-card-content>
+      <ion-button expand="full" color="primary">Más información</ion-button>
+    </ng-container>
+    <ng-container *ngIf="parque.nombre === 'Parque Metropolitano de Santiago'">
+      <img src="/assets/images/metropolitano/Portada.jpg" alt="Metropolitano">
+      <ion-card-header>
+        <ion-card-title>Parque Metropolitano de Santiago</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>El Parque Metropolitano de Santiago es el pulmón verde de la ciudad y ofrece una amplia gama de actividades al aire libre para disfrutar en familia. Puedes recorrer sus senderos, alquilar bicicletas o simplemente relajarte en sus áreas de picnic.</p>
+        <p>¡Ven y disfruta de un día al aire libre con tu familia en este hermoso parque!</p>
+      </ion-card-content>
+      <ion-button expand="full" color="primary" (click)="verDetalleParque(parque.id)">Más información</ion-button>
+    </ng-container>
+  </ion-card>
+</ion-content>
