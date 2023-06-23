@@ -1,52 +1,29 @@
-import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { DBTaskService } from '../services/db-task.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  styleUrls: ['./home.page.scss']
 })
-export class HomePage {
-  userInfoForm: FormGroup;
-  isClearing: boolean = false;
-  isShowing: boolean = false;
+export class HomePage implements OnInit {
+  segmentValue: string = '';
 
-  constructor(
-    private alertController: AlertController,
-    private formBuilder: FormBuilder
-  ) {
-    this.userInfoForm = this.formBuilder.group({
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
-      nivelEducacion: ['', Validators.required],
-      fechaNacimiento: ['', Validators.required],
-    });
+  constructor(private dbTaskService: DBTaskService) {}
+
+  ngOnInit() {
+    this.checkActiveSession();
   }
 
-  async mostrarInformacion() {
-    const nombre = this.userInfoForm.value.nombre;
-    const apellido = this.userInfoForm.value.apellido;
-    const alert = await this.alertController.create({
-      header: 'Información',
-      message: `
-      Apellido: ${apellido}
-      Nombre: ${nombre} 
-  
-      `,
-      buttons: ['Aceptar'],
-    });
-    await alert.present();
-  }
-  
-  
-  
+  async checkActiveSession() {
+    const hasActiveSession = await this.dbTaskService.hasActiveSession();
 
-  limpiarCampos() {
-    this.isClearing = true;
-    setTimeout(() => {
-      this.userInfoForm.reset();
-      this.isClearing = false;
-    }, 1000);
+    if (hasActiveSession) {
+      console.log('Hay una sesión activa');
+      // Realiza las acciones necesarias cuando hay una sesión activa
+    } else {
+      console.log('No hay una sesión activa');
+      // Realiza las acciones necesarias cuando no hay una sesión activa
+    }
   }
 }

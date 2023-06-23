@@ -1,0 +1,37 @@
+<form [formGroup]="certificacionForm" (ngSubmit)="guardarCertificacion()">
+  <ion-item>
+    <ion-label position="floating">Nombre Certificado</ion-label>
+    <ion-input formControlName="nombreCertificado" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Fecha de Obtención</ion-label>
+    <ion-datetime formControlName="fechaObtencion" displayFormat="DD/MM/YYYY" pickerFormat="DD MMM YYYY"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>¿El certificado vence?</ion-label>
+    <ion-toggle formControlName="certificadoVencimiento"></ion-toggle>
+  </ion-item>
+
+  <ion-item *ngIf="certificacionForm.get('certificadoVencimiento')?.value">
+    <ion-label position="floating">Fecha de Vencimiento</ion-label>
+    <ion-datetime formControlName="fechaVencimiento" displayFormat="DD/MM/YYYY" pickerFormat="DD MMM YYYY"></ion-datetime>
+  </ion-item>
+
+  <div class="ion-padding">
+    <ion-button expand="full" color="primary" type="submit">Guardar Certificación</ion-button>
+    <ion-button expand="full" color="secondary" (click)="limpiarCampos()">Limpiar</ion-button>
+  </div>
+</form>
+
+<ion-list>
+  <ion-item *ngFor="let certificacion of certificaciones">
+    <ion-label>
+      <h2>{{ certificacion.nombreCertificado }}</h2>
+      <p>Fecha de Obtención: {{ certificacion.fechaObtencion | date:'dd/MM/yyyy' }}</p>
+      <p *ngIf="certificacion.certificadoVencimiento">Fecha de Vencimiento: {{ certificacion.fechaVencimiento | date:'dd/MM/yyyy' }}</p>
+    </ion-label>
+    <ion-button slot="end" color="danger" (click)="eliminarCertificacion(certificacion)">Eliminar</ion-button>
+  </ion-item>
+</ion-list>

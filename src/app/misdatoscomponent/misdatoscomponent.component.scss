@@ -1,0 +1,24 @@
+.fadeInLeft {
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 1s, opacity 1s;
+  }
+  
+  .fadeInLeft.active {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+  .fadeInRight {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 1s, opacity 1s;
+  }
+  
+  .fadeInRight.active {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+  
+  @import '@angular/material/prebuilt-themes/indigo-pink.css';

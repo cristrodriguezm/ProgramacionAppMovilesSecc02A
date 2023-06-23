@@ -1,0 +1,44 @@
+<form [formGroup]="experienciaForm">
+  <ion-item>
+    <ion-label position="floating">Empresa</ion-label>
+    <ion-input formControlName="empresa" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Año de inicio</ion-label>
+    <ion-input formControlName="anioInicio" type="number" min="1950" max="{{ currentYear }}"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>¿Actualmente trabaja ahí?</ion-label>
+    <ion-checkbox formControlName="actualmenteTrabaja"></ion-checkbox>
+  </ion-item>
+
+  <ion-item *ngIf="!experienciaForm.get('actualmenteTrabaja')?.value">
+    <ion-label position="floating">Año de término</ion-label>
+    <ion-input formControlName="anioTermino" type="number" min="1950" max="{{ currentYear }}"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Cargo</ion-label>
+    <ion-input formControlName="cargo" type="text"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" color="primary" (click)="guardarExperienciaLaboral()">
+    Guardar
+  </ion-button>
+
+  <ion-button expand="full" color="danger" (click)="limpiarFormulario()">
+    Limpiar
+  </ion-button>
+</form>
+
+<ion-list *ngIf="experiencias.length > 0">
+  <ion-item *ngFor="let experiencia of experiencias; let i = index">
+    <ion-label>{{ experiencia.empresa }}</ion-label>
+    <ion-label>{{ experiencia.anioInicio }}</ion-label>
+    <ion-label>{{ experiencia.actualmenteTrabaja ? 'Actualidad' : experiencia.anioTermino }}</ion-label>
+    <ion-label>{{ experiencia.cargo }}</ion-label>
+    <ion-button color="danger" (click)="eliminarExperienciaLaboral(i)">Eliminar</ion-button>
+  </ion-item>
+</ion-list>

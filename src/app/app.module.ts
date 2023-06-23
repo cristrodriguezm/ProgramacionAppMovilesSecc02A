@@ -1,3 +1,6 @@
+import { DBTaskService } from './services/db-task.service';
+import { Storage } from '@ionic/storage-angular'; // Importa el Storage
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -20,7 +23,11 @@ import { ParquesPageModule } from './parques/parques.module';
     MatCardModule,
     ParquesPageModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    DBTaskService, // Agrega el servicio aquí
+    Storage // Agrega el proveedor del Storage aquí
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

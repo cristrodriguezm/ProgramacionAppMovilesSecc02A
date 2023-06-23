@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DBTaskService } from '../services/db-task.service';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,11 @@ import { Router } from '@angular/router';
 export class RegisterPage {
   registerForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private dbTaskService: DBTaskService
+  ) {
     this.registerForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(8)]],
       password: ['', [Validators.required, Validators.pattern('^[0-9]{4}$')]],
@@ -25,10 +30,11 @@ export class RegisterPage {
       console.log('Nuevo usuario:', username);
       console.log('Contraseña:', password);
 
-      // Realizar acciones de registro
+      // Guardar los datos en el servicio DBTaskService
+      this.dbTaskService.registerSession(username, password);
 
-      // Redirigir a la página de inicio de sesión
-      this.router.navigate(['/login']);
+      // Redirigir a la página de inicio de sesión y pasar los datos de usuario y contraseña
+      this.router.navigate(['/login'], { queryParams: { username: username, password: password } });
     } else {
       console.log('El formulario no es válido');
     }
@@ -51,4 +57,3 @@ export class RegisterPage {
     this.registerForm.reset();
   }
 }
-

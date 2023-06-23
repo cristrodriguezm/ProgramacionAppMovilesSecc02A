@@ -1,46 +1,37 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Home</ion-title>
-  </ion-toolbar>
-</ion-header>
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Home</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
-  <form [formGroup]="userInfoForm">
-    <ion-item>
-      <ion-label position="floating">Nombre</ion-label>
-      <ion-input formControlName="nombre" type="text"></ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-label position="floating">Apellido</ion-label>
-      <ion-input formControlName="apellido" type="text"></ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-label>Nivel de educación</ion-label>
-      <ion-select formControlName="nivelEducacion">
-        <ion-select-option value="Primaria">Primaria</ion-select-option>
-        <ion-select-option value="Secundaria">Secundaria</ion-select-option>
-        <ion-select-option value="Universidad">Universidad</ion-select-option>
-      </ion-select>
-    </ion-item>
-  
-    <ion-item>
-      <ion-label>Fecha de nacimiento</ion-label>
-    
-        <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+  <ion-content>
+    <ion-segment mode="md" [(ngModel)]="segmentValue">
+      <ion-segment-button value="experiencia">
+        Experiencia Laboral
+      </ion-segment-button>
+      <ion-segment-button value="certificaciones">
+        Certificaciones
+      </ion-segment-button>
+      <ion-segment-button value="misdatos">
+        Mis Datos
+      </ion-segment-button>
+    </ion-segment>
 
-    </ion-item>
-    
-  
-    <div class="ion-padding">
-      <ion-button expand="full" color="primary" (click)="limpiarCampos()" [class.fadeInLeft]="isClearing" [class.active]="isClearing">Limpiar</ion-button>
-      <ion-button expand="full" color="primary" (click)="mostrarInformacion()" [class.fadeInRight]="isShowing" [class.active]="isShowing">Mostrar</ion-button>
-    </div>
-  </form>
-</ion-content>
+    <ion-list *ngIf="segmentValue === 'experiencia'">
+      <!-- Aquí se mostrará el componente de Experiencia Laboral -->
+      <app-experiencialaboralcomponent></app-experiencialaboralcomponent>
+    </ion-list>
+
+    <ion-list *ngIf="segmentValue === 'certificaciones'">
+      <!-- Aquí se mostrará el componente de Certificaciones -->
+      <app-certificacionescomponent></app-certificacionescomponent>
+    </ion-list>
+
+    <ion-list *ngIf="segmentValue === 'misdatos'">
+      <!-- Aquí se mostrará el componente de Mis Datos -->
+      <app-misdatoscomponent></app-misdatoscomponent>
+    </ion-list>
+  </ion-content>

@@ -1,9 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { ParquesPage } from './parques/parques.page';
-import { CampanaPage } from './parques/campana/campana.page';
-
-
 
 const routes: Routes = [
   {
@@ -42,8 +38,16 @@ const routes: Routes = [
   {
     path: 'parques/metropolitano',
     loadChildren: () => import('./parques/metropolitano/metropolitano.module').then(m => m.MetropolitanoPageModule)
+  },
+  {
+    path: 'not-found',
+    loadChildren: () => import('./not-found/not-found.module').then(m => m.NotFoundPageModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'not-found',
+    pathMatch: 'full'
   }
-  
 ];
 
 @NgModule({
@@ -53,4 +57,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-

@@ -13,6 +13,9 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
+import { ExperiencialaboralcomponentComponent } from '../experiencialaboralcomponent/experiencialaboralcomponent.component';
+import { CertificacionescomponentComponent } from '../certificacionescomponent/certificacionescomponent.component';
+import { MisdatoscomponentComponent } from '../misdatoscomponent/misdatoscomponent.component';
 
 @NgModule({
   imports: [
@@ -25,7 +28,12 @@ import { HomePage } from './home.page';
   MatInputModule,
   MatNativeDateModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage,
+    ExperiencialaboralcomponentComponent,
+    CertificacionescomponentComponent,
+    MisdatoscomponentComponent,
+   
+  ],
 })
 export class HomePageModule {}
 export class AppModule { }
