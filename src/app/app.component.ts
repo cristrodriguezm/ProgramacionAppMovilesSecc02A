@@ -29,7 +29,8 @@ export class AppComponent {
       this.appPages = [
         { title: 'Home', url: 'home', icon: 'heart' },
         { title: 'Parques', url: '/parques', icon: 'leaf' },
-        { title: 'Sobre nosotros', url: '/about-us', icon: 'business' }
+        { title: 'Sobre nosotros', url: '/about-us', icon: 'business' },
+        { title: 'Mapa', url: '/mapa', icon: 'map' }
       ];
     } else {
       this.appPages = [

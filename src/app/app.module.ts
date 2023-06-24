@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { ParquesPageModule } from './parques/parques.module';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +23,8 @@ import { ParquesPageModule } from './parques/parques.module';
     AppRoutingModule,
     ReactiveFormsModule,
     MatCardModule,
-    ParquesPageModule
+    ParquesPageModule,
+    HttpClientModule
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
