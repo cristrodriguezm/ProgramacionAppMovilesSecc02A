@@ -1,46 +1,57 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
-
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-
 import { AppComponent } from './app.component';
+import { DBTaskService } from './services/db-task.service';
+import { NavigationEnd, Router } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('AppComponent', () => {
-
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  let router: Router;
+  let dbTaskService: DBTaskService;
 
   beforeEach(async () => {
-
     await TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [AppComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [RouterTestingModule.withRoutes([])],
+      providers: [DBTaskService],
     }).compileComponents();
-  });
 
-  it('should create the app', async () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    router = TestBed.inject(Router);
+    dbTaskService = TestBed.inject(DBTaskService);
 
-  it('should have menu labels', async () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    spyOn(router.events, 'pipe').and.returnValue(of(new NavigationEnd(0, '/home', '/home')));
+    spyOn(dbTaskService, 'hasActiveSession').and.returnValue(Promise.resolve(true));
+
     fixture.detectChanges();
-    const app = fixture.nativeElement;
-    const menuItems = app.querySelectorAll('ion-label');
-    expect(menuItems.length).toEqual(12);
-    expect(menuItems[0].textContent).toContain('Inbox');
-    expect(menuItems[1].textContent).toContain('Outbox');
   });
 
-  it('should have urls', async () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const app = fixture.nativeElement;
-    const menuItems = app.querySelectorAll('ion-item');
-    expect(menuItems.length).toEqual(12);
-    expect(menuItems[0].getAttribute('ng-reflect-router-link')).toEqual('/folder/inbox');
-    expect(menuItems[1].getAttribute('ng-reflect-router-link')).toEqual('/folder/outbox');
+  it('should create the app', () => {
+    expect(component).toBeTruthy();
   });
 
+  it('should check login status on route change', () => {
+    expect(dbTaskService.hasActiveSession).toHaveBeenCalled();
+    expect(component.isLoggedIn).toBe(true);
+    expect(component.appPages).toEqual([
+      { title: 'Home', url: 'home', icon: 'heart' },
+      { title: 'Parques', url: '/parques', icon: 'leaf' },
+      { title: 'Sobre nosotros', url: '/about-us', icon: 'business' },
+      { title: 'Mapa', url: '/mapa', icon: 'map' }
+    ]);
+  });
+
+  it('should logout and navigate to login page', () => {
+    spyOn(dbTaskService, 'logout');
+    spyOn(router, 'navigate');
+
+    component.logout();
+
+    expect(dbTaskService.logout).toHaveBeenCalled();
+    expect(component.isLoggedIn).toBe(false);
+    expect(router.navigate).toHaveBeenCalledWith(['/login']);
+  });
 });
